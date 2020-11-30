@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour {
 
+    public Waypoint waypointPosition;
+
     [SerializeField] Transform objectToPan;
     [SerializeField] ParticleSystem projectileParticle;
     [SerializeField] float attackRange = 30f;
@@ -54,5 +56,10 @@ public class Tower : MonoBehaviour {
     private void Shoot(bool isActive) {
         var emissionModule = projectileParticle.emission;
         emissionModule.enabled = isActive;
+    }
+
+    public void ChangeTowerWaypoint(Waypoint newWaypoint) {
+        transform.position = newWaypoint.transform.position;
+        waypointPosition = newWaypoint;
     }
 }
