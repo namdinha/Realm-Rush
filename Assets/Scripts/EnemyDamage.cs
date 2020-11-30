@@ -25,7 +25,7 @@ public class EnemyDamage : MonoBehaviour {
     private void KillEnemy() {
         ParticleSystem vfx = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
         vfx.Play();
-        GetComponent<AudioSource>().PlayOneShot(enemyDeathSFX);
+        AudioSource.PlayClipAtPoint(enemyDeathSFX, Camera.main.transform.position, 0.1f);
         float destroyDelay = vfx.main.duration;
         Destroy(vfx.gameObject, destroyDelay);
         Destroy(gameObject);
