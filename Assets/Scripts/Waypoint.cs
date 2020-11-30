@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour {
 
-    const int gridSize = 10;
-
     public bool isPlaceble = true;
 
-    [SerializeField] Tower towerPrefab;
+    const int gridSize = 10;
 
     public int GetGridSize() {
         return gridSize;
@@ -28,8 +26,7 @@ public class Waypoint : MonoBehaviour {
 
     void OnMouseOver() {
         if (Input.GetMouseButtonDown(0) && isPlaceble) {
-            Instantiate(towerPrefab, transform.position, Quaternion.identity);
-            isPlaceble = false;
+            FindObjectOfType<TowerFactory>().AddTower(this);
         }
     }
 }
